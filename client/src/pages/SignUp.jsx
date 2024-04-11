@@ -88,7 +88,7 @@ export default function SignUp() {
                     name='password'
                     value={formData.password || ""}
                     onChange={handleChange}
-                    placeholder='password'
+                    placeholder='create password'
                     required
                     className="w-full px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                   />

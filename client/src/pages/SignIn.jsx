@@ -64,47 +64,53 @@ export default function SignIn() {
             <div className="flex items-center justify-center h-full">
               <div className="w-full max-w-md">
                 <div className="">
-                  <h2 className="text-4xl text-white font-semibold">Sign In</h2>
+                  <h2 className="text-5xl text-white font-semibold">Hi there,</h2>
+                  <h3 className="text-2xl text-white font-semibold mt-4">Welcome to our </h3>
+                  <h3 className="text-2xl text-white font-semibold">contacts portal</h3>
                 </div>
                 <form onSubmit={handleSubmit} className="mt-4">
-                  <div className="mb-4">
-                    <label htmlFor='email' className="text-white">Email</label>
+                  <div className="mb-4 mt-12">
+                   
                     <input
                       type='email'
                       id='email'
                       name='email'
                       value={formData.email || ""}
                       onChange={handleChange}
-                      placeholder='Enter your email'
+                      placeholder='e-mail'
                       required
-                      className="w-full px-3 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+                      className="w-full px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                     />
                   </div>
-                  <div className="mb-4">
-                    <label htmlFor='password' className="text-white">Password</label>
+                  <div className="mb-4 mt-8">
+                    
                     <input
                       type='password'
                       id='password'
                       name='password'
                       value={formData.password || ""}
                       onChange={handleChange}
-                      placeholder='Enter your password'
+                      placeholder='password'
                       required
-                      className="w-full px-3 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+                      className="w-full px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                     />
                   </div>
+                  <div className=" flex flex-row ">
                   <button
                     type='submit'
                     disabled={loading}
-                    className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg"
+                    className=" mt-6 border border-gray-100 text-white font-bold py-2 px-6 rounded-3xl"
                   >
-                    {loading ? "Signing In..." : "Sign In"}
+                    {loading ? "logging In..." : "login"}
                   </button>
+                  <span className="text-white  text-md px-2 mt-8">
+                  {""} or {""}
+                  <Link to='/signup' className=" px-2 text-slate-200 underline">Click Here to Register</Link>
+                </span>
+                  </div>
+                 
                 </form>
-                <p className="text-white mt-4">
-                  Dont have an account?{" "}
-                  <Link to='/signup' className="text-blue-500">Sign Up</Link>
-                </p>
+                
                 <p className="text-red-500">{error ? error.message || "Something went wrong." : ""}</p>
               </div>
             </div>
