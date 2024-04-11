@@ -56,57 +56,71 @@ export default function SignUp() {
   };
 
   return (
-
-
-
-<div>
+    <div>
       <div className="flex h-screen  overflow-hidden">
-        <div className="flex-1 bg-[#083F46] rounded-r-[50%]   pr-10 -my-20  overflow-hidden">
+        <div className="flex-1 bg-[#083F46] rounded-r-[50%] pr-10 -my-20 overflow-hidden">
           {/* Left side - Sign Up component */}
-          <div className="flex items-center justify-center h-full">
-            {/* Your SignUp component goes here */}
-
-            <div >
+          <div className="flex items-center justify-center h-full p-2">
+            <div className="w-full max-w-md">
               <div className="">
-              <h1 className="text-4xl">Hi there,</h1>
-              <h3 className='text-'>Welcome to our</h3>
-              <h3>contacts portal </h3>
+                <h1 className="text-5xl text-white font-bold mb-2">Register Now!</h1>
+
               </div>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor='email'>Email</label>
+              <form onSubmit={handleSubmit} className="mt-4">
+                <div className="mb-8 mt-12">
+
                   <input
                     type='email'
                     id='email'
                     name='email'
                     value={formData.email || ""}
                     onChange={handleChange}
-                    placeholder='Enter your email'
+                    placeholder='e-mail'
                     required
+                    className="w-full px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                   />
                 </div>
-                <div>
-                  <label htmlFor='password'>Password</label>
+                <div className="mb-8 ">
+
                   <input
                     type='password'
                     id='password'
                     name='password'
                     value={formData.password || ""}
                     onChange={handleChange}
-                    placeholder='Enter your password'
+                    placeholder='password'
                     required
+                    className="w-full px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                   />
                 </div>
-                <button type='submit' disabled={loading}>
-                  {loading ? "Signing Up..." : "Sign Up"}
+
+                {/* confirm password */}
+                <div className="mb-4">
+
+                  <input
+                    type='password'
+                    id='confirmPassword'
+                    name='confirmPassword'
+                    value={formData.confirmPassword || ""}
+                    onChange={handleChange}
+                    placeholder='confirm password'
+                    required
+                    className="w-full px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
+                  />
+                </div>
+                <button
+                  type='submit'
+                  disabled={loading}
+                  className=" mt-6 border border-gray-100 text-white font-bold py-2 px-6 rounded-3xl"
+                >
+                  {loading ? "Regestering..." : "Register"}
                 </button>
               </form>
-              <p>
-                Already have an account?{" "}
-                <Link to='/signin'>Sign In</Link>
+              <p className="text-white mt-12 px-2">
+
+                <Link to='/signin' className="text-slate-100 underline"> &lt; Back to login</Link>
               </p>
             </div>
-
           </div>
         </div>
         <div className="flex-1 bg-white rounded-l-[10%]">
@@ -117,18 +131,6 @@ export default function SignUp() {
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-    
   );
+
 }
