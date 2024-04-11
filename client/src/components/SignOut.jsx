@@ -5,9 +5,6 @@ export default function SignOut() {
     const dispatch = useDispatch();
   const handleSignOut = async () => {
 
-   
-
-
     try {
       dispatch(signOutUserStart());
       const res = await fetch('/api/auth/signout');
