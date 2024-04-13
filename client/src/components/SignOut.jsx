@@ -1,5 +1,6 @@
 import { deleteUserFailure, deleteUserSuccess, signOutUserStart } from '../redux/user/userSlice';
 import { useDispatch } from "react-redux";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 export default function SignOut() {
     const dispatch = useDispatch();
@@ -22,5 +23,11 @@ export default function SignOut() {
   };
 
 
-  return (<button onClick={handleSignOut}>Sign Out</button>)
+  return (
+    <div className='flex flex-row'>
+      <RiLogoutCircleLine className='text-white text-2xl mt-1' />
+      <button onClick={handleSignOut} className='text-white text-xl ml-3 underline '>logout</button>
+
+  </div>
+)
 }
