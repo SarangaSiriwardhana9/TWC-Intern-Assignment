@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import logo from '/logo.png'
+import back from '/back.jpg'
 import {
   signInStart,
   signInSuccess,
@@ -34,31 +35,45 @@ export default function SignIn() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       const data = await res.json();
-
-      if (data.success === false) {
+  
+      if (res.ok) {
+        // Success
+        dispatch(signInSuccess(data));
+        // Add alert for success
+        alert("Login successful!");
+        // Navigate after dispatching actions
+        navigate("/");
+      } else {
+        // Failure
         dispatch(signInFailure(data));
-      
+        // Add alert for failure
+        alert(data.message || "Login failed.");
       }
-      dispatch(signInSuccess(data));
-        console.log(data);
-      navigate("/");
     } catch (error) {
       dispatch(signInFailure(error));
-
-      if (error.message.includes("duplicate key error collection")) {
-      console.error("User already exists !");
-      } else {
-        console.error(error);
-      }
+      // Add alert for failure
+      alert("An error occurred during login.");
+      console.error(error);
     }
   };
+  
 
 
     return (
       <div>
-        <div className="flex h-screen  overflow-hidden">
+        <div className="flex h-screen bg-cover bg-center overflow-hidden">
+        {/* Background image with opacity */}
+        <div
+          className="absolute inset-0 "
+          style={{
+            backgroundImage: `url('/back.jpg')`,
+            opacity: 0.15,
+            zIndex: -1, // Ensure the background is behind other content
+            backgroundSize: '50%',
+          }}
+        />
           <div className="flex-1 bg-[#083F46] rounded-r-[50%] pr-10 -my-20 overflow-hidden">
             {/* Left side - Sign In component */}
             <div className="flex items-center justify-center h-full">
@@ -99,7 +114,7 @@ export default function SignIn() {
                   <button
                     type='submit'
                     disabled={loading}
-                    className=" mt-6 border border-gray-100 text-white font-bold py-2 px-6 rounded-3xl"
+                    className=" mt-6 border border-gray-100 text-white font-bold py-1.5 px-8 rounded-3xl"
                   >
                     {loading ? "logging In..." : "login"}
                   </button>
@@ -111,14 +126,20 @@ export default function SignIn() {
                  
                 </form>
                 
-                <p className="text-red-500">{error ? error.message || "Something went wrong." : ""}</p>
+              
               </div>
             </div>
           </div>
-          <div className="flex-1 bg-white rounded-l-[10%]">
+          <div className="flex-1  rounded-l-[10%]">
             {/* Right side - Simple text */}
             <div className="flex items-center justify-center h-full">
-              <p className="text-2xl">Your simple text here</p>
+            <div className="flex flex-col ">
+              <img src={logo} alt="logo" className=" h-12  w-36" />
+              <h1 className="text-6xl text-[#083F46] font-bold mb-2">contacts </h1>
+              <h1 className="text-5xl text-[#083F46]  mb-3">Portal</h1>
+              </div>
+            
+          
             </div>
           </div>
         </div>
