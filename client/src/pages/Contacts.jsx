@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import LogoComponent from '../components/LogoComponent';
 import SignOut from '../components/SignOut';
 import DeleteContact from '../components/alerts/DeleteContact';
-
+import DeleteContactSuccess from '../components/alerts/DeleteContactSuccess';
+import EditSuccess from '../components/alerts/EditSuccess';
 
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
@@ -22,6 +23,8 @@ export default function Contacts() {
   });
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [contactToDelete, setContactToDelete] = useState(null);
+  const [showEditSuccess, setShowEditSuccess] = useState(false); // State to control the visibility of the success message
+ 
   
 
   useEffect(() => {
@@ -56,6 +59,7 @@ export default function Contacts() {
       if (res.ok) {
         setEditingContactId(null);
         fetchContacts();
+        setShowEditSuccess(true); // Set flag to show success message
       } else {
         console.error('Failed to update contact');
       }
@@ -87,6 +91,7 @@ export default function Contacts() {
       if (res.ok) {
         fetchContacts();
         setShowDeleteConfirmation(false);
+        setShowDeleteSuccess(true); // Set flag to show success message
       } else {
         console.error('Failed to delete contact');
       }
@@ -99,7 +104,7 @@ export default function Contacts() {
     setContactToDelete(null);
     setShowDeleteConfirmation(false);
   };
-
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(false); // State to control the visibility of the success message
   return (
     <div className="relative min-h-screen bg-[#083F46] overflow-hidden">
       <div className="absolute -top-20 -mt-2 -right-60 h-64 w-96 bg-white rotate-45"
@@ -220,6 +225,8 @@ export default function Contacts() {
           onCancel={cancelDelete}
         />
       )}
+      {showDeleteSuccess && <DeleteContactSuccess onClose={() => setShowDeleteSuccess(false)} />}
+      {showEditSuccess && <EditSuccess onClose={() => setShowEditSuccess(false)} />}
       <div className="fixed bottom-0 right-0 m-8">
         <SignOut />
       </div>
