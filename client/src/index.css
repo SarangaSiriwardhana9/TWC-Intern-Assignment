@@ -21,9 +21,18 @@
   
   .bottom-left {
     border-width: 140px 140px 0 0;
-    border-color: #fff transparent transparent transparent;
+    border-color: #c22b2b transparent transparent transparent;
     bottom: 0;
     left: 0;
     transform: rotate(-90deg);
   }
-  
+/* Hide the scrollbar for webkit browsers */
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide the scrollbar for other browsers */
+.overflow-y-auto {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}

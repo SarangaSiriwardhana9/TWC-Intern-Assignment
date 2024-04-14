@@ -4,8 +4,10 @@ import back from '/back.jpg';
 import LogoComponent from '../components/LogoComponent';
 import SignOut from '../components/SignOut';
 import { useSelector } from 'react-redux';
+import AddContactSuccess from '../components/alerts/AddContactSuccess';
 
 export default function NewContact() {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to manage success message display
   const { currentUser } = useSelector((state) => state.user);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -40,7 +42,9 @@ export default function NewContact() {
           phoneNumber: '',
           gender: 'male',
         });
-        alert('Contact added successfully!');
+        // Show success message
+        setShowSuccessMessage(true);
+        
       } else {
         const data = await res.json();
         alert(data.message || 'Failed to add contact.');
@@ -158,7 +162,10 @@ export default function NewContact() {
           </div>
         </form>
       </div>
-
+{/* Conditionally render success message */}
+{showSuccessMessage && (
+        <AddContactSuccess onClose={() => setShowSuccessMessage(false)} />
+      )}
       {/* Logout Button in right site bottom */}
       <div className="fixed bottom-0 right-0 m-8">
         <SignOut />
