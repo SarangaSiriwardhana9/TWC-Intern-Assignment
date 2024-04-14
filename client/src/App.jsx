@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import WelcomePage from "./pages/WelcomePage";
 import NewContact from "./pages/NewContact";
+import Contacts from "./pages/Contacts";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -19,6 +20,8 @@ export default function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/welcome' element={<WelcomePage />} />
         <Route path='/newcontact' element={<NewContact />} />
+        <Route path= '/contacts' element={<Contacts />} />
+
         <Route element={<PrivateRoute />}>
           
         </Route>
