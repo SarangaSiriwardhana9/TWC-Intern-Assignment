@@ -19,7 +19,11 @@ This project is a basic full-stack system built as part of the TWC Intern Assign
 To run this project locally, follow these steps:
 
 1. Clone this repository:
-  git clone (https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment.git)
+   
+    ```bash
+       git clone https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment.git
+    ```
+  git clone https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment.git
 
 3. Navigate to the server directory and start the server:
 
