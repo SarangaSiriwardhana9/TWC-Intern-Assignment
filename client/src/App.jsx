@@ -5,9 +5,11 @@ import SignUp from "./pages/SignUp";
 import WelcomePage from "./pages/WelcomePage";
 import NewContact from "./pages/NewContact";
 import Contacts from "./pages/Contacts";
+import Error from "./pages/Error";
 
 import PrivateRoute from "./components/PrivateRoute";
 import { SnackbarProvider } from 'notistack';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -15,17 +17,19 @@ export default function App() {
           vertical: 'top',
           horizontal: 'left',
         }}>
-      <Routes>
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Routes>
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
 
-        <Route element={<PrivateRoute />}>
-        <Route path='/' element={<WelcomePage />} />
-        <Route path='/welcome' element={<WelcomePage />} />
-       <Route path='/contacts/new' element={<NewContact />} />
-        <Route path= '/contacts' element={<Contacts />} />
-        </Route>
-      </Routes>
+          <Route element={<PrivateRoute />}>
+            <Route path='/' element={<WelcomePage />} />
+            <Route path='/welcome' element={<WelcomePage />} />
+            <Route path='/contacts/new' element={<NewContact />} />
+            <Route path='/contacts' element={<Contacts />} />
+          </Route>
+
+          <Route path='*' element={<Error />} />
+        </Routes>
       </SnackbarProvider>
     </BrowserRouter>
   );
