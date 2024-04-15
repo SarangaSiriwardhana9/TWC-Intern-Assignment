@@ -27,11 +27,11 @@ To run this project locally, follow these steps:
 
 3. Navigate to the server directory and start the server:
 
-  ```bash
-    cd server
-    npm install
-    npm start
-  ```
+      ```bash
+        cd server
+        npm install
+        npm start
+      ```
 
 3. In a new terminal, navigate to the client directory and start the client:
 
