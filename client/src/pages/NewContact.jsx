@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import back from '/back.jpg';
 import LogoComponent from '../components/LogoComponent';
 import SignOut from '../components/SignOut';
 import { useSelector } from 'react-redux';
 import AddContactSuccess from '../components/alerts/AddContactSuccess';
+import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 export default function NewContact() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to manage success message display
   const { currentUser } = useSelector((state) => state.user);
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -42,15 +46,28 @@ export default function NewContact() {
           phoneNumber: '',
           gender: 'male',
         });
-        // Show success message
+        // Show success message and after 2 seconds, navigate to contacts page
         setShowSuccessMessage(true);
-        
+        setTimeout(() => {
+          navigate('/contacts');
+        }, 2000); 
+
       } else {
         const data = await res.json();
-        alert(data.message || 'Failed to add contact.');
+        
+        enqueueSnackbar('Failed to add contact ☹️', { variant: 'error',autoHideDuration: 1500, style: {
+          backgroundColor: '#aa4d4d', // Set background color
+          color: 'white', // Set text color
+          borderRadius: '16px',
+        } });
       }
     } catch (error) {
-      alert('An error occurred.');
+      
+      enqueueSnackbar('An error occurred.try again later ☹️', { variant: 'error',autoHideDuration: 1500, style: {
+        backgroundColor: '#aa4d4d', // Set background color
+        color: 'white', // Set text color
+        borderRadius: '16px',
+      } });
       console.error(error);
     }
   };
@@ -70,7 +87,7 @@ export default function NewContact() {
       </div>
 
       {/* main area */}
-      <div className="relative z-50 ml-5 mt-10 ">
+      <div className="relative z-50 ml-10 mt-10 xl:ml-10 xl:mt-10 2xl:ml-40 2xl:mt-32">
         {/* Logo component */}
         <div className="flex flex-col mt-14 ml-40 z-50">
           <LogoComponent />
@@ -78,10 +95,10 @@ export default function NewContact() {
 
         {/* Form area */}
         <form onSubmit={handleSubmit}>
-          <div className="flex flex-col mt-20 ml-40 z-50 pr-20">
-            <h1 className="text-5xl text-[#ffffff] font-bold mb-3 ">New Contact</h1>
+          <div className="flex flex-col mt-14 ml-40 z-50 pr-20">
+            <h1 className="text-5xl text-[#ffffff] font-bold mb-0 ">New Contact</h1>
             <div className="flex flex-col mt-10">
-              <div className="flex flex-row gap-10">
+              <div className="flex flex-row flex-wrap gap-10">
                 {/* full Name */}
                 <div className="mb-4 ">
                   <input
@@ -90,9 +107,10 @@ export default function NewContact() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
+                    maxLength={25}
                     placeholder="Full Name"
                     required
-                    className="w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
+                    className="w-full md:w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                   />
                 </div>
                 {/* email */}
@@ -103,13 +121,14 @@ export default function NewContact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    maxLength={25}
                     placeholder="E-mail"
                     required
-                    className="w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
+                    className="w-full md:w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                   />
                 </div>
               </div>
-              <div className="flex flex-row gap-10">
+              <div className="flex flex-row flex-wrap gap-10">
                 {/* phone number */}
                 <div className="mb-4 ">
                   <input
@@ -120,11 +139,14 @@ export default function NewContact() {
                     onChange={handleChange}
                     placeholder="Phone Number"
                     required
-                    className="w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
+                    className="w-full md:w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
+                    maxLength={25}
+                    pattern="[0-9]*" 
+                    title="Please enter Calid Phone number" 
                   />
                 </div>
                 {/* radio button for gender */}
-                <div className="flex flex-row gap-14 items-center">
+                <div className="flex flex-row gap-16 ml-2 items-center">
                   <span className="text-lg text-[#ffffff]">Gender </span>
                   <label htmlFor="male" className="inline-flex items-center bg-[#083F46] text-white rounded-lg px-2 py-1 cursor-pointer">
                     <input
@@ -155,17 +177,19 @@ export default function NewContact() {
             </div>
             <button
               type="submit"
-              className="mt-12 border w-64 border-gray-100 text-white font-bold py-1.5 px-8 rounded-3xl"
+              className="mt-12 border w-64 border-gray-100 hover:bg-[#173d5a] text-white font-semibold py-1.5 px-8 rounded-3xl"
             >
-              Add Your First Contact
+              add your first contact
             </button>
           </div>
         </form>
       </div>
-{/* Conditionally render success message */}
+      {/* Add contact success message */}
+      {/* Conditionally render success message */}
 {showSuccessMessage && (
         <AddContactSuccess onClose={() => setShowSuccessMessage(false)} />
       )}
+      
       {/* Logout Button in right site bottom */}
       <div className="fixed bottom-0 right-0 m-8">
         <SignOut />
@@ -176,7 +200,7 @@ export default function NewContact() {
         <div className="w-[650px] h-[650px] bg-[#083F46] rounded-full"></div>
       </div>
 
-      {/* Left bottom (unchanged) */}
+      {/* Left bottom */}
       <div
         className="absolute -bottom-40 -left-40 h-96 w-64 bg-white -rotate-45"
         style={{
@@ -186,4 +210,5 @@ export default function NewContact() {
       ></div>
     </div>
   );
+
 }
