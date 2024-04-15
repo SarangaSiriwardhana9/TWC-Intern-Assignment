@@ -40,8 +40,7 @@ To run this project locally, follow these steps:
 4. Open your browser and visit `http://localhost:3000` to view the app.
 
 ## Deployment
-
-This project is deployed on Render. You can access it [here]([<render_deployed_url>](https://twc-intern-assignment-deployed.onrender.com)).
+The project is deployed on [Render](https://twc-intern-assignment-deployed.onrender.com). 
 
 ## API Documentation
 
