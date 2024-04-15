@@ -9,15 +9,11 @@ This project is a basic full-stack system built as part of the TWC Intern Assign
 - Responsive design using Tailwind CSS
 
 ## Technologies Used
-
-- **Frontend:**
-  - React.js
-  - Tailwind CSS
-
-- **Backend:**
-  - Node.js with Express.js
-  - MongoDB for database
-
+- **Frontend:** React.js with Vite
+- **Styling:** Tailwind CSS
+- **Backend:** Node.js with Express.js
+- **Database:** MongoDB
+  
 ## Getting Started
 
 To run this project locally, follow these steps:
