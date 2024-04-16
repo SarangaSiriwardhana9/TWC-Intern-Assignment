@@ -48,7 +48,7 @@ The project is deployed on [Render](https://twc-intern-assignment-deployed.onren
 
 ## API Documentation
 
-For testing the API endpoints, refer to the Postman documentation [here](<postman_documentation_link>).
+For testing the API endpoints, refer to the Postman documentation [here](https://documenter.getpostman.com/view/26798436/2sA3BkbCe6).
 
 ## Screenshots
 
