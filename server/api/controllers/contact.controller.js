@@ -4,7 +4,7 @@ import { errorHandler } from '../utils/error.js';
 // Add a new contact
 export const addContact = async (req, res, next) => {
   const { fullName, email, phoneNumber, gender } = req.body;
-  const userId = req.user.id; // Assuming you have implemented authentication middleware
+  const userId = req.user.id; 
 
   try {
     const newContact = new Contact({
@@ -26,7 +26,7 @@ export const addContact = async (req, res, next) => {
 export const updateContact = async (req, res, next) => {
   const { id } = req.params;
   const { fullName, email, phoneNumber, gender } = req.body;
-  const userId = req.user.id; // Assuming you have implemented authentication middleware
+  const userId = req.user.id; 
 
   try {
     const updatedContact = await Contact.findOneAndUpdate(
@@ -48,7 +48,7 @@ export const updateContact = async (req, res, next) => {
 // Delete a contact
 export const deleteContact = async (req, res, next) => {
   const { id } = req.params;
-  const userId = req.user.id; // Assuming you have implemented authentication middleware
+  const userId = req.user.id; 
 
   try {
     const deletedContact = await Contact.findOneAndDelete({ _id: id, user: userId });
@@ -65,7 +65,7 @@ export const deleteContact = async (req, res, next) => {
 
 // Get all contacts
 export const getAllContacts = async (req, res, next) => {
-  const userId = req.user.id; // Assuming you have implemented authentication middleware
+  const userId = req.user.id; 
 
   try {
     const contacts = await Contact.find({ user: userId });
