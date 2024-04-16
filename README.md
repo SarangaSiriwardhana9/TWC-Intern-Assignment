@@ -9,7 +9,7 @@ This project is a basic full-stack system built as part of the TWC Intern Assign
   <img src="https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment/assets/99233703/9f304c37-ed8b-4983-8ddd-fb3427bc5f96" alt="logo" width="100px"/>
 </div>
 
-| Logo | Screenshot |
+
 |------|------------|
 | ![1](https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment/assets/99233703/7e49186a-c7a2-4d3b-86c7-507cf67f2084) | ![2](https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment/assets/99233703/35a17666-45fb-44c1-85f8-6c8e79520d18) |
 | ![3](https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment/assets/99233703/5ba8f34e-3ab8-480a-9ad6-25cd3c1f5085) | ![4](https://github.com/SarangaSiriwardhana9/TWC-Intern-Assignment/assets/99233703/41a0506e-beaf-4d9b-8dac-9613c50df31d) |
