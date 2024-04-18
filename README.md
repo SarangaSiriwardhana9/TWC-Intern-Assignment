@@ -51,6 +51,9 @@ This project is a basic full-stack system built as part of the TWC Intern Assign
 - **Styling:** Tailwind CSS
 - **Backend:** Node.js with Express.js
 - **Database:** MongoDB
+
+## State Management
+- Redux is used for state management throughout the application.
   
 ## Getting Started
 
