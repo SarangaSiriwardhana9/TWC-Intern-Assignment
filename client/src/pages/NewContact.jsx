@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import back from '/back.jpg';
 import LogoComponent from '../components/LogoComponent';
 import SignOut from '../components/SignOut';
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 export default function NewContact() {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false); 
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function NewContact() {
     fullName: '',
     email: '',
     phoneNumber: '',
-    gender: 'male', 
+    gender: 'male',
   });
 
   const handleChange = (e) => {
@@ -46,28 +46,32 @@ export default function NewContact() {
           phoneNumber: '',
           gender: 'male',
         });
-        
+
         setShowSuccessMessage(true);
         setTimeout(() => {
           navigate('/contacts');
-        }, 2000); 
+        }, 2000);
 
       } else {
         const data = await res.json();
-        
-        enqueueSnackbar('Failed to add contact ☹️', { variant: 'error',autoHideDuration: 1500, style: {
-          backgroundColor: '#aa4d4d', 
-          color: 'white', 
-          borderRadius: '16px',
-        } });
+
+        enqueueSnackbar('Failed to add contact ☹️', {
+          variant: 'error', autoHideDuration: 1500, style: {
+            backgroundColor: '#aa4d4d',
+            color: 'white',
+            borderRadius: '16px',
+          }
+        });
       }
     } catch (error) {
-      
-      enqueueSnackbar('An error occurred.try again later ☹️', { variant: 'error',autoHideDuration: 1500, style: {
-        backgroundColor: '#aa4d4d', 
-        color: 'white', 
-        borderRadius: '16px',
-      } });
+
+      enqueueSnackbar('An error occurred.try again later ☹️', {
+        variant: 'error', autoHideDuration: 1500, style: {
+          backgroundColor: '#aa4d4d',
+          color: 'white',
+          borderRadius: '16px',
+        }
+      });
       console.error(error);
     }
   };
@@ -141,8 +145,8 @@ export default function NewContact() {
                     required
                     className="w-full md:w-96 px-6 py-2 rounded-3xl border-2  border-gray-300 focus:outline-none placeholder:text-slate-600 placeholder:font-bold focus:border-blue-500"
                     maxLength={25}
-                    pattern="[0-9]*" 
-                    title="Please enter Calid Phone number" 
+                    pattern="[0-9]*"
+                    title="Please enter Calid Phone number"
                   />
                 </div>
                 {/* radio button for gender */}
@@ -177,19 +181,19 @@ export default function NewContact() {
             </div>
             <button
               type="submit"
-              className="mt-12 border w-64 border-gray-100 hover:bg-[#173d5a] text-white font-semibold py-1.5 px-8 rounded-3xl"
+              className="mt-12 border w-64 border-gray-100 hover:bg-[#0b525b] text-white font-semibold py-1.5 px-8 rounded-3xl"
             >
               add your first contact
             </button>
           </div>
         </form>
       </div>
-      
+
       {/* Conditionally render success message */}
-{showSuccessMessage && (
+      {showSuccessMessage && (
         <AddContactSuccess onClose={() => setShowSuccessMessage(false)} />
       )}
-      
+
       {/* Logout Button in right site bottom */}
       <div className="fixed bottom-0 right-0 m-8">
         <SignOut />
