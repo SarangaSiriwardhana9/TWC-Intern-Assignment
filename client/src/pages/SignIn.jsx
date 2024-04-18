@@ -133,7 +133,7 @@ export default function SignIn() {
                   <button
                     type='submit'
                     disabled={loading}
-                    className=" mt-6 border border-gray-100 text-white hover:bg-[#173d5a] font-bold py-1.5 px-8 rounded-3xl"
+                    className=" mt-6 border border-gray-100 text-white hover:bg-[#0b525b] font-bold py-1.5 px-8 rounded-3xl"
                   >
                     {loading ? "logging In..." : "login"}
                   </button>

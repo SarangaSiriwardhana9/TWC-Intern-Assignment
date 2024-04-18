@@ -144,7 +144,7 @@ export default function SignUp() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-6 border border-gray-100 text-white font-bold py-1.5 px-6 rounded-3xl  hover:bg-[#173d5a]"
+                  className="mt-6 border border-gray-100 text-white font-bold py-1.5 px-6 rounded-3xl  hover:bg-[#0b525b]"
                 >
                   {loading ? "registering..." : "register"}
                 </button>

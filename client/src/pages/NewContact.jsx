@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import back from '/back.jpg';
 import LogoComponent from '../components/LogoComponent';
 import SignOut from '../components/SignOut';
 import { useSelector } from 'react-redux';
 import AddContactSuccess from '../components/alerts/AddContactSuccess';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import RightTopShape from '../components/Shapes/RightTopShape';
+import LeftBottomShape from '../components/Shapes/LeftBottomShape';
 
 export default function NewContact() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -78,17 +79,9 @@ export default function NewContact() {
 
   return (
     <div className="relative min-h-screen bg-[#083F46] overflow-hidden">
-      {/* Top right triangle */}
-      <div
-        className="absolute -top-20 -mt-2 -right-60 h-64 w-96 bg-white rotate-45"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(${back}) `,
-          backgroundSize: '100%',
-        }}
-      ></div>
-      <div className="absolute -right-6 -top-6">
-        <div className="w-[650px] h-[650px] bg-[#083F46] rounded-full"></div>
-      </div>
+      {/* Top right shape */}
+      <RightTopShape/>
+    
 
       {/* main area */}
       <div className="relative z-50 ml-10 mt-10 xl:ml-10 xl:mt-10 2xl:ml-40 2xl:mt-32">
@@ -199,19 +192,9 @@ export default function NewContact() {
         <SignOut />
       </div>
 
-      {/* Left side */}
-      <div className="absolute z-10 -left-6 -bottom-6">
-        <div className="w-[650px] h-[650px] bg-[#083F46] rounded-full"></div>
-      </div>
-
-      {/* Left bottom */}
-      <div
-        className="absolute -bottom-40 -left-40 h-96 w-64 bg-white -rotate-45"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(${back})`,
-          backgroundSize: '100%',
-        }}
-      ></div>
+      {/* Left Bottom shape */}
+      <LeftBottomShape/>
+    
     </div>
   );
 
